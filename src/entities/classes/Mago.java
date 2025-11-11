@@ -1,8 +1,9 @@
 package entities.classes;
 
-public non-sealed class Mago extends Personagem {
+import java.util.ArrayList;
 
-    public Mago(double vida, double dano, double escudo, double attackSpeed) {
-        super(vida, dano, escudo, attackSpeed);
+public non-sealed class Mago extends Personagem {
+    public Mago(double vida, double dano, double escudo, double attackSpeed, double moveSpeed) {
+        super(vida, dano, escudo, attackSpeed, moveSpeed);
     }
 }

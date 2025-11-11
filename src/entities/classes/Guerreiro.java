@@ -1,8 +1,9 @@
 package entities.classes;
 
-public non-sealed class Guerreiro extends Personagem{
+import java.util.ArrayList;
 
-    public Guerreiro(double vida, double dano, double escudo, double attackSpeed) {
-        super(vida, dano, escudo, attackSpeed);
+public non-sealed class Guerreiro extends Personagem{
+    public Guerreiro(double vida, double dano, double escudo, double attackSpeed, double moveSpeed) {
+        super(vida, dano, escudo, attackSpeed, moveSpeed);
     }
 }
