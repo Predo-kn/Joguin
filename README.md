@@ -10,21 +10,33 @@ O jogador deve tomar decisões em eventos, combates e upgrades, moldando o rumo 
 O foco do projeto é explorar:
 
 -Árvores de decisão complexas
+
 -Mecânicas de combate baseadas em Turnos
+
 -Progressão procedural e narrativa
+
 -Construção de decks e gerenciamento de recursos
+
 
 🎮 Gameplay (Em Desenvolvimento)
 
 -Sistema de decisões: Cada escolha altera seu caminho e consequências futuras
+
 -Combate estratégico: Baseado em turnos, itens e efeitos especiais
+
 -Eventos aleatórios: Histórias e desafios únicos em cada partida
+
 -Progressão roguelike: Morte permanente, mas aprendizado constante
 
+
 🛠️ Tecnologias
+
 -Área	Tecnologia
+
 -Linguagem	Java
+
 -Arte	Sprites 2D originais / pixel art / placeholders
+
 -Controle de Versão	Git & GitHub
 
 🚀 Como Rodar o Projeto
@@ -51,15 +63,21 @@ Ajudá-lo pode trazer um aliado — ou uma armadilha.
 📅 Roadmap
 
 -Sistema básico de decisões
+
 -Protótipo de combate
+
 -Interface de builds
+
 -Eventos narrativos
+
 -Balanceamento e arte final
 
 💡 Inspirações
 
 -Slay the Spire
+
 -Mão do demônio
+
 -He is coming
 
 🤝 Contribuição
