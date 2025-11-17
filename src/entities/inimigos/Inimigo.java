@@ -1,6 +1,6 @@
 package entities.inimigos;
 
-import entities.classes.Personagem;
+import entities.classes.Classes;
 
 public abstract sealed class Inimigo permits CervoDesalinhado, CordeiroDesfigurado, EcoAbismo, EscorpiaoDasCinzas,
 EspiritoDunas, FragmentoErrante, Gargula, GuardiãoTempestades, LarvaObservadora, LoboDoVento, LoboSilvestre,
@@ -11,6 +11,7 @@ LodoRastejante, SapoInchado, SemRosto, TrepadeiraAnimada{
     private double escudo;
     private double atackSpeed;
     private double moveSpeed;
+
 
     public Inimigo(double vida, double dano, double escudo, double atackSpeed,  double moveSpeed) {
         this.vida = vida;
@@ -59,25 +60,25 @@ LodoRastejante, SapoInchado, SemRosto, TrepadeiraAnimada{
         this.moveSpeed = moveSpeed;
     }
 
-    public void atacar(Personagem personagem){
-        if(!personagem.esquivar(this)){
-            personagem.setVida(personagem.getVida() - (this.dano - personagem.getEscudo()));
+    public void atacar(Classes classes){
+        if(!classes.esquivar(this)){
+            classes.setVida(classes.getVida() - (this.dano - classes.getEscudo()));
             System.out.println("Personagem recebeu dano");
         }else{
             System.out.println("Personagem esquivou");
         }
     }
 
-    public double chanceEsquiva(Personagem personagem) {
-        double diferenca = this.moveSpeed - personagem.getAttackSpeed();
+    public double chanceEsquiva(Classes classes) {
+        double diferenca = this.moveSpeed - classes.getAttackSpeed();
         if (diferenca <= 0) return 0;
         if (diferenca > 10) diferenca = 10;
         return diferenca * 10;
     }
 
 
-    public boolean esquivar(Personagem personagem){
-        double chanceEsquiva = chanceEsquiva(personagem);
+    public boolean esquivar(Classes classes){
+        double chanceEsquiva = chanceEsquiva(classes);
         double sorteio = Math.random();
         try{
             if(chanceEsquiva < 10){
