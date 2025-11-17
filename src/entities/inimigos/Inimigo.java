@@ -2,7 +2,10 @@ package entities.inimigos;
 
 import entities.classes.Personagem;
 
-public abstract sealed class Inimigo permits Lobo {
+public abstract sealed class Inimigo permits CervoDesalinhado, CordeiroDesfigurado, EcoAbismo, EscorpiaoDasCinzas,
+EspiritoDunas, FragmentoErrante, Gargula, GuardiãoTempestades, LarvaObservadora, LoboDoVento, LoboSilvestre,
+LodoRastejante, SapoInchado, SemRosto, TrepadeiraAnimada{
+
     private double vida;
     private double dano;
     private double escudo;

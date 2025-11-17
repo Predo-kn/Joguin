@@ -4,7 +4,7 @@ import entities.inimigos.Inimigo;
 
 import java.util.ArrayList;
 
-public abstract sealed class Personagem <T> permits Guerreiro, Mago, Escudeiro{
+public abstract sealed class Personagem <T> permits Archer, Knight, Mage, Warrior, Bandido{
     private double vida;
     private double dano;
     private double escudo;
@@ -96,6 +96,4 @@ public abstract sealed class Personagem <T> permits Guerreiro, Mago, Escudeiro{
         }
         return false;
     }
-
-
 }

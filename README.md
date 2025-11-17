@@ -53,10 +53,10 @@ Execute o jogo no modo de teste ou build final.
 
 🧩 Exemplo de Decisão
 
-🗡️ Você encontra um guerreiro caído.
+🗡️ Você encontra um knight caído.
 Ajudá-lo pode trazer um aliado — ou uma armadilha.
 
-[Ajudar o guerreiro] (+Itens, -10 HP)
+[Ajudar o knight] (+Itens, -10 HP)
 
 [Ignorar e seguir] (+10 ouro, evento perdido)
 
