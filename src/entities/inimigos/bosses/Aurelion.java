@@ -1,17 +1,18 @@
-package entities.inimigos;
+package entities.inimigos.bosses;
 
 import entities.classes.Classes;
 
-public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo, LarvaObservadora, LoboSilvestre, SemRosto {
+public class Aurelion {
+    // Aurelion, o Guardião Sereno - Mapa 1 //
 
-    private double vida;
-    private double dano;
-    private double escudo;
-    private double atackSpeed;
-    private double moveSpeed;
+    private double vida = 100;
+    private double dano = 12;
+    private double escudo = 5;
+    private double atackSpeed = 2;
+    private double moveSpeed = 2;
 
 
-    public Inimigo(double vida, double dano, double escudo, double atackSpeed,  double moveSpeed) {
+    public Aurelion(double vida, double dano, double escudo, double atackSpeed,  double moveSpeed) {
         this.vida = vida;
         this.dano = dano;
         this.escudo = escudo;

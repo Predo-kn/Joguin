@@ -1,6 +1,6 @@
 package entities.itens;
 
-public abstract sealed class Item permits CoracaoPradaria, Teste {
+public abstract sealed class Item permits Teste {
     private String nome;
     private String info;
     private Raridade raridade;

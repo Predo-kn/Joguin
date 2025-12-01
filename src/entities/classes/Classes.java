@@ -4,7 +4,7 @@ import entities.inimigos.Inimigo;
 
 import java.util.ArrayList;
 
-public abstract sealed class Classes<T> permits Archer, Knight, Mage, Warrior, Bandido{
+public abstract sealed class Classes<T> permits Archer, Knight, Mage, Tanker {
     private double vida;
     private double dano;
     private double escudo;
