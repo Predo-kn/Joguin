@@ -10,6 +10,12 @@ public class Player<T> {
     private Classes classe;
     private PlayerBag bag;
 
+    public Player(String nome){
+        this.nome = nome;
+        bag = new PlayerBag();
+
+    }
+
     public Player(String nome, Classes classe){
         this.nome = nome;
         this.classe = classe;
@@ -39,4 +45,6 @@ public class Player<T> {
     public void setBag(PlayerBag bag) {
         this.bag = bag;
     }
+
+
 }

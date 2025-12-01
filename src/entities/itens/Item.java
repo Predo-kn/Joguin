@@ -1,23 +1,36 @@
 package entities.itens;
 
-public abstract sealed class Item permits Teste {
+import entities.classes.Classes;
+
+import java.util.ArrayList;
+
+public abstract class Item {
     private String nome;
     private String info;
     private Raridade raridade;
-    private ItemExclusivo itemExclusivo;
+    private ArrayList<Buff> buff;
+    private double mult;
 
-    public Item(String nome, String info, Raridade raridade){
+    public Item(){
+
+    }
+
+    public Item(String nome, String info, Raridade raridade, double mult ) {
         this.nome = nome;
         this.info = info;
         this.raridade = raridade;
-        this.itemExclusivo = null;
+        this.buff = new ArrayList<>();
+        this.mult = mult;
     }
 
-    public Item(String nome, String info, Raridade raridade, ItemExclusivo itemExclusivo){
-        this.nome = nome;
-        this.nome = info;
-        this.raridade = raridade;
-        this.itemExclusivo = itemExclusivo;
+
+
+    public double getMult() {
+        return mult;
+    }
+
+    public void setMult(double mult) {
+        this.mult = mult;
     }
 
     public String getNome() {
@@ -44,29 +57,25 @@ public abstract sealed class Item permits Teste {
         this.raridade = raridade;
     }
 
-    public ItemExclusivo getItemExclusivos() {
-        return itemExclusivo;
+
+    public ArrayList<Buff> getBuff() {
+        return buff;
     }
 
-    public void setItemExclusivos(ItemExclusivo itemExclusivos) {
-        this.itemExclusivo = itemExclusivos;
+    public void setBuff(ArrayList<Buff> buff) {
+        this.buff = buff;
+    }
+
+    public void setAtt(Classes cl){
+
     }
 
     @Override
     public String toString() {
-        if (this.itemExclusivo != null) {
-            return "Item{" +
-                    "nome='" + nome + '\'' +
-                    ", info='" + info + '\'' +
-                    ", raridade=" + raridade +
-                    ", itemExclusivo=" + itemExclusivo +
-                    '}';
-        }else{
-            return "Item{" +
-                    "nome='" + nome + '\'' +
-                    ", info='" + info + '\'' +
-                    ", raridade=" + raridade +
-                    '}';
-        }
+        return "Item{" +
+                "nome='" + nome + '\'' +
+                ", info='" + info + '\'' +
+                ", raridade=" + raridade +
+                '}';
     }
 }

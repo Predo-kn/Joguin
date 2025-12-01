@@ -1,5 +1,6 @@
 package data.repository;
 
+import entities.classes.Classes;
 import entities.itens.Item;
 import entities.itens.Raridade;
 
@@ -9,6 +10,10 @@ import java.util.Scanner;
 public class PlayerBag <T>{
     private ArrayList<Item> itens;
 
+    public PlayerBag() {
+        this.itens = new ArrayList<>();
+    }
+
     public void addItem(Item item){
         if (podeTrocar(item)){
             itens.add(checaRaridade(item), item);
@@ -16,6 +21,8 @@ public class PlayerBag <T>{
             System.out.println("Item mantido");
         }
     }
+
+
 
     public boolean podeTrocar(Item item){
         Scanner sc = new Scanner(System.in);
@@ -46,5 +53,17 @@ public class PlayerBag <T>{
         }else{
             return 4;
         }
+    }
+
+    public ArrayList<Item> getItens() {
+        return itens;
+    }
+
+    public void setItens(ArrayList<Item> itens) {
+        this.itens = itens;
+    }
+
+    public void equipItem(){
+
     }
 }

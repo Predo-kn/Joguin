@@ -1,8 +1,8 @@
-package entities.inimigos.bosses;
+package entities.inimigos;
 
 import entities.classes.Classes;
 
-public class Aurelion {
+public non-sealed class Aurelion extends Inimigo{
     // Aurelion, o Guardião Sereno - Mapa 1 //
 
     private double vida = 100;
@@ -13,11 +13,7 @@ public class Aurelion {
 
 
     public Aurelion(double vida, double dano, double escudo, double atackSpeed,  double moveSpeed) {
-        this.vida = vida;
-        this.dano = dano;
-        this.escudo = escudo;
-        this.atackSpeed = atackSpeed;
-        this.moveSpeed = moveSpeed;
+        super(vida,dano,escudo,atackSpeed,moveSpeed);
     }
     public double getVida() {
         return vida;
@@ -59,6 +55,7 @@ public class Aurelion {
         this.moveSpeed = moveSpeed;
     }
 
+    @Override
     public void atacar(Classes classes){
         if(!classes.esquivar(this)){
             classes.setVida(classes.getVida() - (this.dano - classes.getEscudo()));

@@ -1,8 +1,12 @@
 package entities.inimigos;
 
 import entities.classes.Classes;
+import entities.itens.Item;
 
-public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo, LarvaObservadora, LoboSilvestre, SemRosto {
+import java.util.Random;
+
+public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo,
+        LarvaObservadora, LoboSilvestre, SemRosto, Aurelion {
 
     private double vida;
     private double dano;
@@ -92,5 +96,15 @@ public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo, 
             System.out.println("Erro ao esquivar");
         }
         return false;
+    }
+
+    public Item drop(Item[] itens){
+        Random rd = new Random();
+
+        if (rd.nextInt(0,1) == 1){
+            return itens[0];
+        }else {
+            return itens[1];
+        }
     }
 }

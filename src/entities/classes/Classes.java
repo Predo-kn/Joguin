@@ -1,10 +1,13 @@
 package entities.classes;
 
+import data.repository.PlayerBag;
 import entities.inimigos.Inimigo;
+import entities.itens.Item;
+import entities.player.Player;
 
 import java.util.ArrayList;
 
-public abstract sealed class Classes<T> permits Archer, Knight, Mage, Tanker {
+public abstract sealed class Classes<T> extends Player permits Archer, Knight, Mage, Tanker {
     private double vida;
     private double dano;
     private double escudo;
@@ -12,7 +15,9 @@ public abstract sealed class Classes<T> permits Archer, Knight, Mage, Tanker {
     private double moveSpeed;
     private ArrayList<T> itens;
 
-    public Classes(double vida, double dano, double escudo, double attackSpeed, double moveSpeed){
+    public Classes(String nome, double vida, double dano, double escudo, double attackSpeed, double moveSpeed){
+        super(nome);
+        super.setClasse(this);
         this.vida = vida;
         this.dano = dano;
         this.escudo = escudo;
@@ -96,4 +101,10 @@ public abstract sealed class Classes<T> permits Archer, Knight, Mage, Tanker {
         }
         return false;
     }
+
+
+    public void EquiparItem(){
+
+    }
+
 }
