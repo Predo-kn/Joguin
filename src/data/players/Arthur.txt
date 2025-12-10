@@ -1,5 +1,17 @@
+nome=Arthur
+classe=Knight
 vida=55
 dano=12
 escudo=4
 attackSpeed=2
 moveSpeed=2
+itemEquipado=Coração Do Aurelion
+itemRaridade=MITHIC
+itemMult=5.0
+totalItens=2
+item_0_nome=Máscara Sem Identidade
+item_0_raridade=EPIC
+item_0_mult=3.0
+item_1_nome=Olho Vigilante
+item_1_raridade=RARE
+item_1_mult=2.0
