@@ -1,6 +1,7 @@
 package entities.itens;
 
 import entities.classes.Classes;
+import game.exceptions.InvalidArgumentException;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,12 @@ public abstract class Item {
     }
 
     public Item(String nome, String info, Raridade raridade, double mult ) {
+        if (nome == null || nome.isEmpty()) {
+            throw new InvalidArgumentException("Nome do item não pode ser nulo ou vazio");
+        }
+        if (mult < 0) {
+            throw new InvalidArgumentException("Multiplicador do item não pode ser negativo");
+        }
         this.nome = nome;
         this.info = info;
         this.raridade = raridade;
@@ -30,6 +37,9 @@ public abstract class Item {
     }
 
     public void setMult(double mult) {
+        if (mult < 0) {
+            throw new InvalidArgumentException("Multiplicador do item não pode ser negativo");
+        }
         this.mult = mult;
     }
 
@@ -66,8 +76,49 @@ public abstract class Item {
         this.buff = buff;
     }
 
-    public void setAtt(Classes cl){
+    /**
+     * Aplica os efeitos do item ao personagem
+     */
+    public void aplicarEfeito(Classes cl) {
+        if (cl == null) {
+            throw new InvalidArgumentException("Personagem não pode ser nulo");
+        }
+        
+        for (Buff b : buff) {
+            aplicarBuff(cl, b);
+        }
+        
+        System.out.println("Item " + nome + " aplicado com sucesso!");
+    }
 
+    /**
+     * Aplica um buff específico ao personagem
+     */
+    private void aplicarBuff(Classes cl, Buff buffType) {
+        double valor = mult;
+        
+        switch (buffType) {
+            case VIDA:
+                cl.setVida(cl.getVida() + valor);
+                System.out.println("  +Vida: " + valor);
+                break;
+            case DANO:
+                cl.setDano(cl.getDano() + valor);
+                System.out.println("  +Dano: " + valor);
+                break;
+            case ESCUDO:
+                cl.setEscudo(cl.getEscudo() + valor);
+                System.out.println("  +Escudo: " + valor);
+                break;
+            case ATKSPEED:
+                cl.setAttackSpeed(cl.getAttackSpeed() + valor);
+                System.out.println("  +Atk Speed: " + valor);
+                break;
+            case MOVESPEED:
+                cl.setMoveSpeed(cl.getMoveSpeed() + valor);
+                System.out.println("  +Move Speed: " + valor);
+                break;
+        }
     }
 
     @Override
