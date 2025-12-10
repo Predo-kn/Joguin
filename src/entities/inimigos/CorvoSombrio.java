@@ -8,6 +8,11 @@ public non-sealed class CorvoSombrio extends Inimigo {
     private double atackSpeed = 4;
     private double moveSpeed = 5;
 
+    public CorvoSombrio() {
+        super(22, 4, 0, 4, 5);
+        carregarAtributosDoArquivo("CorvoSombrio");
+    }
+
     public CorvoSombrio(double vida, double dano, double escudo, double atackSpeed, double moveSpeed) {
         super(vida, dano, escudo, atackSpeed, moveSpeed);
     }

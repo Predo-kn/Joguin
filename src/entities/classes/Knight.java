@@ -10,4 +10,9 @@ public non-sealed class Knight extends Classes {
     public Knight(double vida, double dano, double escudo, double attackSpeed, double moveSpeed) {
         super(vida, dano, escudo, attackSpeed, moveSpeed);
     }
+
+    public Knight() {
+        super("Knight", 55, 12, 4, 2, 2);
+        carregarAtributosDoArquivo("Knight");
+    }
 }

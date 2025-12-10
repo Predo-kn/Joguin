@@ -10,4 +10,9 @@ public non-sealed class Tanker extends Classes {
     public Tanker(double vida, double dano, double escudo, double attackSpeed, double moveSpeed) {
         super(vida, dano, escudo, attackSpeed, moveSpeed);
     }
+
+    public Tanker() {
+        super("Tanker", 75, 8, 6, 1, 1);
+        carregarAtributosDoArquivo("Tanker");
+    }
 }

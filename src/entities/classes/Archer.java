@@ -11,5 +11,8 @@ public non-sealed class Archer extends Classes {
         super(vida, dano, escudo, attackSpeed, moveSpeed);
     }
 
-
+    public Archer() {
+        super("Archer", 45, 10, 2, 3, 4);
+        carregarAtributosDoArquivo("Archer");
+    }
 }

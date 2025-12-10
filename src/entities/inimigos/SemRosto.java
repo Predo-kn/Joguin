@@ -8,6 +8,11 @@ public non-sealed class SemRosto extends Inimigo {
     private double atackSpeed = 3;
     private double moveSpeed = 3;
 
+    public SemRosto() {
+        super(70, 10, 4, 3, 3);
+        carregarAtributosDoArquivo("SemRosto");
+    }
+
     public SemRosto(double vida, double dano, double escudo, double atackSpeed, double moveSpeed) {
         super(vida, dano, escudo, atackSpeed, moveSpeed);
     }

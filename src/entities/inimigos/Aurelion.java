@@ -9,6 +9,7 @@ public non-sealed class Aurelion extends Inimigo{
 
     public Aurelion() {
         super(VIDA_PADRAO, DANO_PADRAO, ESCUDO_PADRAO, ATACK_SPEED_PADRAO, MOVE_SPEED_PADRAO);
+        carregarAtributosDoArquivo("Aurelion");
     }
 
     public Aurelion(double vida, double dano, double escudo, double atackSpeed, double moveSpeed) {

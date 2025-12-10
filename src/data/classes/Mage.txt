@@ -1,0 +1,5 @@
+vida=40
+dano=16
+escudo=0
+attackSpeed=2
+moveSpeed=2
