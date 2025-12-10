@@ -2,11 +2,8 @@ package game;
 
 import entities.classes.Classes;
 import entities.inimigos.Inimigo;
+import entities.itens.Item;
 
-/**
- * Sistema de combate baseado em turnos.
- * Gerencia a lógica de batalha entre um jogador e um inimigo.
- */
 public class Battle {
     private Classes player;
     private Inimigo enemy;
@@ -31,9 +28,6 @@ public class Battle {
         this.state = BattleState.ONGOING;
     }
 
-    /**
-     * Executa um turno de batalha
-     */
     public void executeTurn() {
         if (state != BattleState.ONGOING) {
             throw new IllegalStateException("A batalha já terminou com estado: " + state);
@@ -55,9 +49,6 @@ public class Battle {
         }
     }
 
-    /**
-     * Executa o turno do jogador
-     */
     private void executePlayerTurn() {
         System.out.println("\n--- Turno do Jogador " + turnCount + " ---");
         System.out.println("Vida do Jogador: " + player.getVida() + " | Vida do Inimigo: " + enemy.getVida());
@@ -69,9 +60,6 @@ public class Battle {
         }
     }
 
-    /**
-     * Executa o turno do inimigo
-     */
     private void executeEnemyTurn() {
         System.out.println("\n--- Turno do Inimigo " + turnCount + " ---");
         System.out.println("Vida do Jogador: " + player.getVida() + " | Vida do Inimigo: " + enemy.getVida());
@@ -83,31 +71,22 @@ public class Battle {
         }
     }
 
-    /**
-     * Verifica se a batalha terminou
-     */
     private void checkBattleEnd() {
         if (player.getVida() <= 0) {
             state = BattleState.PLAYER_DEFEAT;
-            System.out.println("\n🪦 DERROTA! O jogador foi derrotado!");
+            System.out.println("\nDerrota! O jogador foi derrotado!");
         } else if (enemy.getVida() <= 0) {
             state = BattleState.PLAYER_WIN;
-            System.out.println("\n🎉 VITÓRIA! Inimigo derrotado!");
+            System.out.println("\nVitória! Inimigo derrotado!");
         }
     }
 
-    /**
-     * Alterna entre turno do jogador e do inimigo
-     */
     private void toggleTurn() {
         isPlayerTurn = !isPlayerTurn;
     }
 
-    /**
-     * Inicia a batalha automática até o final
-     */
     public void startAutoBattle() {
-        System.out.println("\n⚔️ INICIANDO BATALHA ⚔️");
+        System.out.println("\n=== Iniciando Batalha ===");
         System.out.println("Jogador: " + player.getNome() + " vs Inimigo");
         
         while (state == BattleState.ONGOING) {
@@ -117,19 +96,31 @@ public class Battle {
         printBattleSummary();
     }
 
-    /**
-     * Imprime um resumo da batalha
-     */
+    public Item executeBattleAndGetDrop() {
+        startAutoBattle();
+        
+        if (state == BattleState.PLAYER_WIN) {
+            Item drop = enemy.soltarDrop();
+            if (drop != null) {
+                System.out.println("Item obtido: " + drop.getNome());
+                return drop;
+            } else {
+                System.out.println("Inimigo não deixou itens");
+                return null;
+            }
+        }
+        
+        return null;
+    }
+
     private void printBattleSummary() {
-        System.out.println("\n======== RESUMO DA BATALHA ========");
+        System.out.println("\n=== Resumo da Batalha ===");
         System.out.println("Total de turnos: " + turnCount);
         System.out.println("Resultado: " + state);
         System.out.println("Vida do Jogador: " + player.getVida());
         System.out.println("Vida do Inimigo: " + enemy.getVida());
-        System.out.println("====================================\n");
+        System.out.println("=========================\n");
     }
-
-    // Getters
 
     public Classes getPlayer() {
         return player;

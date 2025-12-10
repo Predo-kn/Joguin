@@ -1,11 +1,6 @@
 package entities.classes;
 
 public non-sealed class Mage extends Classes {
-    //Habilidades
-    //• Raio Arcano – 22 dano
-    //• Barreira Etérea – +4 escudo por 1 turno
-    //• Sifão Mágico – causa 10 dano e recupera 5 vida
-
     private double vida = 40;
     private double dano = 16;
     private double escudo = 0;

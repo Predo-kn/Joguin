@@ -1,8 +1,6 @@
 package entities.inimigos;
 
 public non-sealed class Aurelion extends Inimigo{
-    // Aurelion, o Guardião Sereno - Mapa 1 //
-
     private static final double VIDA_PADRAO = 100;
     private static final double DANO_PADRAO = 12;
     private static final double ESCUDO_PADRAO = 5;

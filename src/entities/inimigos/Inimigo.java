@@ -4,6 +4,7 @@ import entities.classes.Classes;
 import entities.itens.Item;
 import game.exceptions.InvalidArgumentException;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo,
@@ -14,9 +15,9 @@ public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo,
     private double escudo;
     private double atackSpeed;
     private double moveSpeed;
+    private ArrayList<Item> dropTable;
 
-
-    public Inimigo(double vida, double dano, double escudo, double atackSpeed,  double moveSpeed) {
+    public Inimigo(double vida, double dano, double escudo, double atackSpeed, double moveSpeed) {
         if (vida <= 0) throw new InvalidArgumentException("Vida do inimigo deve ser maior que 0");
         if (dano < 0) throw new InvalidArgumentException("Dano do inimigo não pode ser negativo");
         if (escudo < 0) throw new InvalidArgumentException("Escudo do inimigo não pode ser negativo");
@@ -28,6 +29,7 @@ public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo,
         this.escudo = escudo;
         this.atackSpeed = atackSpeed;
         this.moveSpeed = moveSpeed;
+        this.dropTable = new ArrayList<>();
     }
     
     public double getVida() {
@@ -86,6 +88,37 @@ public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo,
         this.moveSpeed = moveSpeed;
     }
 
+    public ArrayList<Item> getDropTable() {
+        return dropTable;
+    }
+
+    public void adicionarDrop(Item item) {
+        if (item == null) {
+            throw new InvalidArgumentException("Item não pode ser nulo");
+        }
+        dropTable.add(item);
+    }
+
+    public void adicionarDrops(Item... itens) {
+        if (itens == null || itens.length == 0) {
+            throw new InvalidArgumentException("Lista de itens não pode ser nula ou vazia");
+        }
+        for (Item item : itens) {
+            if (item != null) {
+                dropTable.add(item);
+            }
+        }
+    }
+
+    public Item soltarDrop() {
+        if (dropTable.isEmpty()) {
+            return null;
+        }
+        Random rd = new Random();
+        int indice = rd.nextInt(dropTable.size());
+        return dropTable.get(indice);
+    }
+
     public void atacar(Classes classes){
         if (classes == null) {
             throw new InvalidArgumentException("Personagem não pode ser nulo");
@@ -110,7 +143,6 @@ public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo,
         return diferenca * 10;
     }
 
-
     public boolean esquivar(Classes classes){
         if (classes == null) {
             throw new InvalidArgumentException("Personagem não pode ser nulo");
@@ -124,15 +156,5 @@ public abstract sealed class Inimigo permits Carnical, CorvoSombrio, EcoAbismo,
         }else{
             return sorteio < (chanceEsquiva/100);
         }
-    }
-
-    public Item drop(Item[] itens){
-        if (itens == null || itens.length == 0) {
-            throw new InvalidArgumentException("Lista de itens não pode ser nula ou vazia");
-        }
-        
-        Random rd = new Random();
-        int indice = rd.nextInt(itens.length);
-        return itens[indice];
     }
 }

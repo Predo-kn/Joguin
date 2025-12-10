@@ -71,9 +71,6 @@ public class PlayerBag <T>{
         }
     }
 
-    /**
-     * Equipa um item da bag no personagem
-     */
     public void equipItem(Classes classes, int indiceRaridade) {
         if (classes == null) {
             throw new InvalidArgumentException("Personagem não pode ser nulo");

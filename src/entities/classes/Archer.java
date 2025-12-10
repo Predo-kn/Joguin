@@ -1,11 +1,6 @@
 package entities.classes;
 
 public non-sealed class Archer extends Classes {
-    //Habilidades
-    //• Flecha Dupla – 2 hits de 7 dano (14 total)
-    //• Recuo Ágil – deixa ataque inimigo falhar (1 vez), cooldown 3
-    //• Mira Mortal – +30% dano no próximo ataque
-
     private double vida = 45;
     private double dano = 10;
     private double escudo = 2;

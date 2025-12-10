@@ -135,9 +135,6 @@ public abstract sealed class Classes<T> extends Player permits Archer, Knight, M
         }
     }
 
-    /**
-     * Equipa um item do inventário, aplicando seus efeitos
-     */
     public void equiparItem(Item item) {
         if (item == null) {
             throw new InvalidArgumentException("Item não pode ser nulo");

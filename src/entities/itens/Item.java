@@ -30,8 +30,6 @@ public abstract class Item {
         this.mult = mult;
     }
 
-
-
     public double getMult() {
         return mult;
     }
@@ -67,7 +65,6 @@ public abstract class Item {
         this.raridade = raridade;
     }
 
-
     public ArrayList<Buff> getBuff() {
         return buff;
     }
@@ -76,9 +73,6 @@ public abstract class Item {
         this.buff = buff;
     }
 
-    /**
-     * Aplica os efeitos do item ao personagem
-     */
     public void aplicarEfeito(Classes cl) {
         if (cl == null) {
             throw new InvalidArgumentException("Personagem não pode ser nulo");
@@ -91,9 +85,6 @@ public abstract class Item {
         System.out.println("Item " + nome + " aplicado com sucesso!");
     }
 
-    /**
-     * Aplica um buff específico ao personagem
-     */
     private void aplicarBuff(Classes cl, Buff buffType) {
         double valor = mult;
         
