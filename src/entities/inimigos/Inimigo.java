@@ -41,7 +41,6 @@ public abstract sealed class Inimigo
         this.dropTable = new ArrayList<>();
     }
 
-    /* ===================== GETTERS ===================== */
 
     public double getVida() {
         return vida;
@@ -63,7 +62,6 @@ public abstract sealed class Inimigo
         return moveSpeed;
     }
 
-    /* ===================== SETTERS ===================== */
 
     public void setVida(double vida) {
         this.vida = Math.max(0, vida);
@@ -89,7 +87,6 @@ public abstract sealed class Inimigo
         this.moveSpeed = moveSpeed;
     }
 
-    /* ===================== COMBATE ===================== */
 
     public boolean esquivar(Classes player) {
         double diferenca = player.getMoveSpeed() - this.attackSpeed;
@@ -115,7 +112,6 @@ public abstract sealed class Inimigo
     }
 
 
-    /* ===================== DROP ===================== */
 
     public void adicionarDrop(Item item) {
         if (item == null) throw new InvalidArgumentException("Item de drop não pode ser nulo");
@@ -129,7 +125,6 @@ public abstract sealed class Inimigo
         return dropTable.remove(indice);
     }
 
-    /* ===================== LOAD ===================== */
 
     protected void carregarAtributosDoArquivo(String nomeArquivo) {
         try {

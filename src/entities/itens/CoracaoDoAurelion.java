@@ -1,13 +1,17 @@
 package entities.itens;
 
 public class CoracaoDoAurelion extends Item{
-
-    private String nome = "Coração Do Aurelion";
-    private String info = "Uma máscara lisa que toma a expressão do portador.";
-    private Raridade raridade = Raridade.MITHIC;
-
-
-    public CoracaoDoAurelion() {
-        super("Coração Do Aurelion", "", Raridade.MITHIC);
+    public CoracaoDoAurelion(String nome, String info, Raridade raridade) {
+        super(
+                "Coração Dourado de Aurelion",
+                "Um núcleo pulsante de energia ancestral do Guardião" +
+                        "Quando a vida cai abaixo de 30%, concede +4 de Dano até o fim do combate.",
+                Raridade.MITHIC
+        );
+        addBuff(Buff.VIDA, 15);
+        addBuff(Buff.DANO, 5);
+        addBuff(Buff.MOVESPEED, 3);
     }
 }
+
+

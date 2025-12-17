@@ -157,8 +157,6 @@ public abstract sealed class Classes extends Player
         return Math.random() < (chanceEsquiva(inimigo) / 100);
     }
 
-    /* ===================== ITENS ===================== */
-
     public void equiparItem(Item item) {
         if (item == null) throw new InvalidArgumentException("Item não pode ser nulo");
 

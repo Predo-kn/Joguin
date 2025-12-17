@@ -41,7 +41,6 @@ public class PlayerBag {
             return;
         }
 
-        // Confirmação de troca
         Scanner sc = new Scanner(System.in);
         System.out.println("Slot de raridade ocupado!");
         System.out.println("Atual: " + atual.getNome());
@@ -50,7 +49,6 @@ public class PlayerBag {
 
         if (sc.next().equalsIgnoreCase("Sim")) {
 
-            // Se o item atual estiver equipado, remove da classe
             if (classe != null && classe.getItemEquipado() == atual) {
                 classe.removerItemEquipado();
                 System.out.println("Item equipado foi removido.");
