@@ -1,5 +1,5 @@
 vida=55
-dano=12
+dano=555
 escudo=4
-attackSpeed=2
+attackSpeed=100
 moveSpeed=2

@@ -3,9 +3,9 @@ package entities.inimigos;
 public non-sealed class LarvaObservadora extends Inimigo {
 
     private double vida = 35;
-    private double dano = 6;
-    private double escudo = 3;
-    private double atackSpeed = 2;
+    private double dano = 10;
+    private double escudo = 2;
+    private double atackSpeed = 3;
     private double moveSpeed = 2;
 
     public LarvaObservadora() {

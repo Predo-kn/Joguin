@@ -1,0 +1,9 @@
+dano=10.0
+classe=Archer
+moveSpeed=4.0
+totalItens=0
+vida=45.0
+escudo=2.0
+attackSpeed=3.0
+nome=Pedro
+nivel=3

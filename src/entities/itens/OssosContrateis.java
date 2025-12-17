@@ -1,11 +1,19 @@
 package entities.itens;
 
-public class OssosContrateis {
+public class OssosContrateis extends Item{
 
-    private String nome = "Ossos Contráteis";
-    private String info = "Fragmentos de ossos que se ajustam ao corpo do usuário";
-    private Raridade raridade = Raridade.RARE;
+    public OssosContrateis() {
+        super(
+                "Olho Vigilante",
+                "Um olho preservado que nunca pisca. " +
+                        "Concede +1 Attack Speed e +3 de dano no primeiro ataque do combate.",
+                Raridade.RARE
+        );
 
+        addBuff(Buff.VIDA, 6);
+        addBuff(Buff.ESCUDO, 2);
+
+    }
     //Efeito:
     //+8 Vida Máxima
     //Reduz o dano recebido na primeira rodada em 20%

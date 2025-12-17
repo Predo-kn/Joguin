@@ -8,7 +8,7 @@ public non-sealed class Knight extends Classes {
     private double moveSpeed = 2;
 
     public Knight(double vida, double dano, double escudo, double attackSpeed, double moveSpeed) {
-        super(vida, dano, escudo, attackSpeed, moveSpeed);
+        super("Knight", vida, dano, escudo, attackSpeed, moveSpeed);
     }
 
     public Knight() {

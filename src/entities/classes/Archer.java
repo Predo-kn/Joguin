@@ -8,7 +8,7 @@ public non-sealed class Archer extends Classes {
     private double moveSpeed = 4;
 
     public Archer(double vida, double dano, double escudo, double attackSpeed, double moveSpeed) {
-        super(vida, dano, escudo, attackSpeed, moveSpeed);
+        super("Knight", vida, dano, escudo, attackSpeed, moveSpeed);
     }
 
     public Archer() {

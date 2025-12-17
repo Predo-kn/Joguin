@@ -6,7 +6,7 @@ public non-sealed class CorvoSombrio extends Inimigo {
     private double dano = 4;
     private double escudo = 0;
     private double atackSpeed = 4;
-    private double moveSpeed = 5;
+    private double moveSpeed = 4;
 
     public CorvoSombrio() {
         super(22, 4, 0, 4, 5);

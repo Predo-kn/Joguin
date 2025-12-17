@@ -3,113 +3,92 @@ package entities.itens;
 import entities.classes.Classes;
 import game.exceptions.InvalidArgumentException;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Item {
+
     private String nome;
     private String info;
     private Raridade raridade;
-    private ArrayList<Buff> buff;
-    private double mult;
+    private Map<Buff, Double> buffs;
 
-    public Item(){
-
+    public Item() {
+        this.buffs = new HashMap<>();
     }
 
-    public Item(String nome, String info, Raridade raridade, double mult ) {
+    public Item(String nome, String info, Raridade raridade) {
         if (nome == null || nome.isEmpty()) {
             throw new InvalidArgumentException("Nome do item não pode ser nulo ou vazio");
         }
-        if (mult < 0) {
-            throw new InvalidArgumentException("Multiplicador do item não pode ser negativo");
-        }
+
         this.nome = nome;
         this.info = info;
         this.raridade = raridade;
-        this.buff = new ArrayList<>();
-        this.mult = mult;
+        this.buffs = new HashMap<>();
     }
 
-    public double getMult() {
-        return mult;
+    public Map<Buff, Double> getBuffs() {
+        return buffs;
     }
 
-    public void setMult(double mult) {
-        if (mult < 0) {
-            throw new InvalidArgumentException("Multiplicador do item não pode ser negativo");
+
+    public void addBuff(Buff buff, double valor) {
+        if (valor <= 0) {
+            throw new InvalidArgumentException("Valor do buff deve ser positivo");
         }
-        this.mult = mult;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-    public Raridade getRaridade() {
-        return raridade;
-    }
-
-    public void setRaridade(Raridade raridade) {
-        this.raridade = raridade;
-    }
-
-    public ArrayList<Buff> getBuff() {
-        return buff;
-    }
-
-    public void setBuff(ArrayList<Buff> buff) {
-        this.buff = buff;
+        buffs.put(buff, valor);
     }
 
     public void aplicarEfeito(Classes cl) {
         if (cl == null) {
             throw new InvalidArgumentException("Personagem não pode ser nulo");
         }
-        
-        for (Buff b : buff) {
-            aplicarBuff(cl, b);
+
+        for (Map.Entry<Buff, Double> entry : buffs.entrySet()) {
+            Buff tipo = entry.getKey();
+            double valor = entry.getValue();
+
+            switch (tipo) {
+                case VIDA -> cl.setVida(cl.getVida() + valor);
+                case DANO -> cl.setDano(cl.getDano() + valor);
+                case ESCUDO -> cl.setEscudo(cl.getEscudo() + valor);
+                case ATKSPEED -> cl.setAttackSpeed(cl.getAttackSpeed() + valor);
+                case MOVESPEED -> cl.setMoveSpeed(cl.getMoveSpeed() + valor);
+            }
+
+            System.out.println("  +" + tipo + ": " + valor);
         }
-        
+
         System.out.println("Item " + nome + " aplicado com sucesso!");
     }
 
-    private void aplicarBuff(Classes cl, Buff buffType) {
-        double valor = mult;
-        
-        switch (buffType) {
-            case VIDA:
-                cl.setVida(cl.getVida() + valor);
-                System.out.println("  +Vida: " + valor);
-                break;
-            case DANO:
-                cl.setDano(cl.getDano() + valor);
-                System.out.println("  +Dano: " + valor);
-                break;
-            case ESCUDO:
-                cl.setEscudo(cl.getEscudo() + valor);
-                System.out.println("  +Escudo: " + valor);
-                break;
-            case ATKSPEED:
-                cl.setAttackSpeed(cl.getAttackSpeed() + valor);
-                System.out.println("  +Atk Speed: " + valor);
-                break;
-            case MOVESPEED:
-                cl.setMoveSpeed(cl.getMoveSpeed() + valor);
-                System.out.println("  +Move Speed: " + valor);
-                break;
-        }
+    public String getNome() {
+        return nome;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public Raridade getRaridade() {
+        return raridade;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public void setRaridade(Raridade raridade) {
+        this.raridade = raridade;
+    }
+
+    public void setBuffs(Map<Buff, Double> buffs) {
+        this.buffs = buffs;
     }
 
     @Override

@@ -1,43 +1,22 @@
 package entities.itens;
 
-import entities.classes.Classes;
+public class PresaDoLobo extends Item {
 
-import java.util.ArrayList;
+    // 1. Presa do Lobo — (Comum)
+    // Drop de: Lobo Silvestre
+    // Descrição: Um dente afiado que vibra com energia primal.
+    // Efeito:
+    // +2 de Dano
+    // +1 de Velocidade de Movimento
 
-public class PresaDoLobo  extends  Item{
+    public PresaDoLobo() {
+        super(
+                "Presa do Lobo",
+                "Um dente afiado que vibra com energia primal.",
+                Raridade.COMMON
+        );
 
-    private String nome = "Presa do Lobo";
-    private String info = "Daddd";
-    private Raridade raridade = Raridade.COMMON;
-    private ArrayList<Buff> buff;
-    private double mult;
-
-    public PresaDoLobo(){
-        buff = new ArrayList<>();
-        buff.add(Buff.DANO.ordinal(),Buff.MOVESPEED);
-
-
-
+        addBuff(Buff.DANO, 2);
+        addBuff(Buff.MOVESPEED, 1);
     }
-    @Override
-    public void setAtt(Classes cl){
-        if (cl.getBag().getItens().contains(this)){
-            cl.setDano(cl.getDano() +2);
-            cl.setMoveSpeed(cl.getMoveSpeed() +1);
-        }
-    }
-
-
-    /*public PresaDoLobo(String nome, String info, Raridade raridade){
-        super(nome, info, raridade);
-    }*/
-
-
-    //1. Presa do Lobo — (Comum)
-    //Drop de: Lobo Silvestre
-    //Descrição: Um dente afiado que vibra com energia primal.
-    //Efeito:
-    //+2 de Dano
-    //+1 Velocidade de Movimento
-    //Design: A ideia é dar um leve empurrão no início sem afetar muito o balanceamento.
 }

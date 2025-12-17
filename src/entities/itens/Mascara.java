@@ -1,12 +1,18 @@
 package entities.itens;
 
-public class Mascara {
+public class Mascara extends Item {
 
-    private String nome = "Máscara Sem Identidade";
-    private String info = "Uma máscara lisa que toma a expressão do portador.";
-    private Raridade raridade = Raridade.EPIC;
-    //Efeito:
-    //+10 de Vida Máxima
-    //+2 de Escudo por rodada
-    //Quando sua vida cai abaixo de 30%, ganha +4 Dano até o fim do combate
+    // Máscara Sem Identidade — (Épico)
+    // Quando a vida cai abaixo de 30%,
+    // ganha +4 Dano até o fim do combate
+
+    public Mascara() {
+        super(
+                "Máscara Sem Identidade",
+                "Uma máscara lisa que toma a expressão do portador. " +
+                        "Quando a vida cai abaixo de 30%, concede +4 de Dano até o fim do combate.",
+                Raridade.EPIC
+        );
+        addBuff(Buff.VIDA, 10);
+    }
 }
